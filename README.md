@@ -1,8 +1,6 @@
-# dotfiles-void
+### Dotfiles for Void Linux
 
-## Dotfiles for Void Linux
-
-## Void Commands
+#### Void Commands
 - sudo xbps-install -Su         ### Update Package Lists
 - xbps-query -Rs 			          ### Searching for Packages
 - sudo xbps-install -S          ### Installing and Updating Packages
@@ -10,5 +8,5 @@
 - sudo xbps-remove -R           ### Remove a package with all its dependencies
 
 
-## References
+#### References
 - https://linuxiac.com/void-linux-xbps-package-manager/
