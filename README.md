@@ -24,8 +24,8 @@ Note: The above command will bounce you out of xfce and into a terminal.  Take a
 - sudo xbps-install -S virt-manager libvirt qemu
 - Start the services that are created by these packages:
 	- sudo ln -s /etc/sv/libvirtd /var/service
-	-sudo ln -s /etc/sv/virtlockd /var/service
-	-sudo ln -s /etc/sv/virtlogd /var/service
+	- sudo ln -s /etc/sv/virtlockd /var/service
+	- sudo ln -s /etc/sv/virtlogd /var/service
 - Making sure your user is part of the libvirt group:
 	- sudo gpasswd -a "$USER" libvirt
 
@@ -39,10 +39,10 @@ Note: The above command will bounce you out of xfce and into a terminal.  Take a
 
 #### Void Commands
 - sudo xbps-install -Su         		### Update Package Lists
-- xbps-query -Rs 										### Searching for Packages
+- xbps-query -Rs 				### Searching for Packages
 - sudo xbps-install -S          		### Installing and Updating Packages
 - xbps-query -l | grep vlc      		### Searching Through Installed Packages
-- sudo xbps-remove -R           		### Remove a package with all its dependencies
+- sudo xbps-remove -R           	### Remove a package with all its dependencies
 
 
 #### References

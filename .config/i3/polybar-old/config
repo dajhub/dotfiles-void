@@ -1,0 +1,634 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+###########################################################
+#              COLOR CONFIGURATION
+###########################################################
+[colors]
+;------------------------------
+;Gruvbox theme (Gruvbox Material Dark)
+;------------------------------
+;background = #282828
+;background-alt = #444
+;foreground = #d4be98
+;foreground-alt = #555
+;primary = #fe8019
+;secondary = #e60053
+;alert = #bd2c40
+;red = #ea6962
+;orange = #e78a4e
+;green = #a9b665
+;blue = #7daea3
+;purple = #d3869b
+;aqua = #89b482
+;darkgray = #282828
+
+;------------------------------
+;Nord theme - https://www.nordtheme.com
+;------------------------------
+;background = #2e3440
+;background-alt = #3b4252
+;;--- foreground is text color - Frost
+;foreground = #81A1C1
+;;--- foreground-alt is nord Snow Storm (first color)
+;foreground-alt = #81A1C1
+;;-- primary is the underline in the panel (Aurora - nord yellow)
+;primary = #EBCB8B
+;secondary = #EBCB8B
+;alert = #BF616A
+
+;------------------------------
+;OneDark
+;------------------------------
+background = #282c34
+background-alt = #3f444a
+foreground = #bbc2cf
+foreground-alt = #abb2bf
+primary = #EBCB8B
+secondary = #EBCB8B
+alert = #BF616A
+
+
+;------------------------------
+;Alternative colors
+;------------------------------
+;brick=#be4a2f
+;light_orange=#d77643
+;lighter_skin=#ead4aa
+;light_skin=#e4a672
+;dark_skin=#b86f50
+;darker_skin=#733e39
+;darkest_skin=#3e2731
+;dark_red=#a22633
+;red=#e43b44
+;orange=#f77622
+;dark_yellow=#feae34
+;yellow=#fee761
+;light_green=#63c74d
+;green=#3e8948
+;dark_green=#265c42
+;darker_green=#193c3e
+;blue=#124e89
+;light_blue=#0099db
+;accent=#0099db
+;cyan=#2ce8f5
+;white=#ffffff
+;base5=#c0cbdc
+;foreground_accent=#c0cbdc
+;base4=#8b9bb4
+;foreground=#8b9bb4
+;base3=#5a6988
+;base2=#3a4466
+;base1=#262b44
+;background=#262b44
+;base0=#181425
+;red2=#ff0044
+;purple=#68386c
+;magenta=#b55088
+;pink=#f6757a
+;beige=#e8b796
+;dark_beige=#c28569
+
+###########################################################
+#              POLYBAR CONFIGURATION
+###########################################################
+
+[bar/mybar]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 25
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 4
+
+;font-0 = fixed:pixelsize=10;1
+;font-0 = "SF Pro Display:size=10"
+font-0 = "Noto sans regular:size=10"
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:size=10
+font-4 = "Iosevka Nerd Font:size=10;0"
+
+modules-left = i3 bspwm xwindow
+modules-center = mpd date
+modules-right = checkupdates filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+wm-restack = i3 bspwm
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+###########################################################
+#                   MODULES
+###########################################################
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+;[module/xkeyboard]
+;type = internal/xkeyboard
+;blacklist-0 = num lock
+
+format-prefix = ">> "
+format-prefix-foreground = ${colors.foreground-alt}
+;format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 2
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+;------------------------------
+;filesystem
+;------------------------------
+
+;[module/filesystem]
+;type = internal/fs
+;interval = 25
+
+;mount-0 = /
+
+;label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+;label-unmounted = %mountpoint% not mounted
+;label-unmounted-foreground = ${colors.foreground-alt}
+
+;------------------------------
+;bspwm & i3
+;------------------------------
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state>
+format-padding = 1
+index-sort = true
+
+enable-click = true
+reverse-scroll = false
+
+label-focused = 
+label-focused-padding = 3
+
+label-occupied = 
+label-occupied-padding = 3
+
+label-empty = 
+label-empty-padding = 3
+
+;;;;Uncomment the following (and comment out the above) if numbers preferred for each workspace
+;label-focused = %index%
+;label-focused-background = ${colors.background-alt}
+;label-focused-underline= ${colors.primary}
+;label-focused-padding = 2
+;
+;label-occupied = %index%
+;label-occupied-padding = 2
+;
+;label-urgent = %index%!
+;label-urgent-background = ${colors.alert}
+;label-urgent-padding = 2
+;
+;label-empty = %index%
+;label-empty-foreground = ${colors.foreground-alt}
+;label-empty-padding = 2
+;
+;; Separator in between workspaces
+;; label-separator = |
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+;------------------------------
+;mpd
+;------------------------------
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+;------------------------------
+;backlight
+;------------------------------
+
+[module/xbacklight]
+;type=internal/xbacklight
+type=internal/backlight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+card = intel_backlight
+
+enable-scroll = true
+ramp-0 = " "
+ramp-1 = " "
+ramp-2 = " "
+label = %percentage%%
+format = <ramp>  <label>
+format-foreground = ${colors.foreground}
+
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+
+;------------------------------
+;cpu
+;------------------------------
+
+;[module/cpu]
+;type = internal/cpu
+;interval = 2
+;format-prefix = " "
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #f90000
+;label = %percentage:2%%
+
+;------------------------------
+;memory
+;------------------------------
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "   "
+;format-underline = #4bffdc
+label = %gb_used%
+format-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.foreground}
+
+;------------------------------
+;wlan
+;------------------------------
+
+;[module/wlan]
+;type = internal/network
+;interface = net1
+;interval = 3.0
+
+;format-connected = <ramp-signal> <label-connected>
+;format-connected-underline = #9f78e1
+;label-connected = %essid%
+
+;format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
+;ramp-signal-foreground = ${colors.foreground-alt}
+
+;------------------------------
+;ethernet
+;------------------------------
+
+;[module/eth]
+;type = internal/network
+;interface = virbr0-nic
+;interval = 3.0
+
+;format-connected-underline = #55aa55
+;format-connected-prefix = " "
+;format-connected-prefix-foreground = ${colors.foreground-alt}
+;label-connected = %local_ip%
+
+;format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+;------------------------------
+;date & time
+;------------------------------
+
+[module/date]
+type = internal/date
+label = %date% %time%
+interval = 5
+
+date =     %a %d %B |
+;date-alt = " %Y-%m-%d"
+format-foreground = ${colors.foreground}
+
+time = %H:%M
+;time-alt = %H:%M
+
+;format-prefix = 
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #0a6cf5
+
+;------------------------------
+;volume
+;------------------------------
+
+[module/pulseaudio]
+type = internal/pulseaudio
+interval = 1
+
+format-volume = <label-volume>
+label-volume = %percentage%%
+format-volume-prefix = "   "
+label-volume-foreground = ${colors.foreground}
+format-volume-prefix-foreground = ${colors.foreground}
+;label-volume-underline = #B48EAD
+;format-volume-prefix-underline = #B48EAD
+
+format-muted = <label-muted>
+label-muted = %percentage%%
+format-muted-prefix = "婢   "
+label-muted-foreground = #BF616A
+format-muted-prefix-foreground = #BF616A
+;label-muted-underline = #BF616A
+;format-muted-prefix-underline = #BF616A
+
+;[module/alsa]
+;type = internal/alsa
+
+;format-volume = <label-volume> <bar-volume>
+;label-volume = VOL
+;label-volume-foreground = ${root.foreground}
+
+;format-muted-prefix = " "
+;format-muted-foreground = ${colors.foreground-alt}
+;label-muted = sound muted
+
+;bar-volume-width = 10
+;bar-volume-foreground-0 = #55aa55
+;bar-volume-foreground-1 = #55aa55
+;bar-volume-foreground-2 = #55aa55
+;bar-volume-foreground-3 = #55aa55
+;bar-volume-foreground-4 = #55aa55
+;bar-volume-foreground-5 = #f5a70a
+;bar-volume-foreground-6 = #ff5555
+;bar-volume-gradient = false
+;bar-volume-indicator = |
+;bar-volume-indicator-font = 2
+;bar-volume-fill = ─
+;bar-volume-fill-font = 2
+;bar-volume-empty = ─
+;bar-volume-empty-font = 2
+;bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+;------------------------------
+;battery
+;------------------------------
+
+[module/battery]
+type=internal/battery
+battery=BAT0
+adapter=AC
+poll-interval = 2
+
+label-charging= %percentage%%
+label-charging-foreground=${colors.blue}
+ramp-capacity-0=" "
+ramp-capacity-1=" "
+ramp-capacity-2=" "
+ramp-capacity-3=" "
+ramp-capacity-4=" "
+ramp-capacity-5=" "
+format-discharging=<ramp-capacity> <label-discharging>
+format-discharging-foreground=${colors.orange}
+label-discharging=%percentage%%
+label-full= 100%
+label-full-foreground=${colors.green}
+
+;------------------------------
+;temperature
+;------------------------------
+
+;[module/temperature]
+;type = internal/temperature
+;thermal-zone = 0
+;warn-temperature = 60
+
+;format = <ramp> <label>
+;format-underline = #f50a4d
+;format-warn = <ramp> <label-warn>
+;format-warn-underline = ${self.format-underline}
+
+;label = %temperature-c%
+;label-warn = %temperature-c%
+;label-warn-foreground = ${colors.secondary}
+
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
+;ramp-foreground = ${colors.foreground-alt}
+
+
+;------------------------------
+;updates - set for arch at the moment
+;------------------------------
+
+;[module/checkupdates]
+;type = custom/script
+;exec = ~/.config/polybar/scripts/checkupdates.sh
+;interval = 1000
+;label = Updates: %output%
+;format-foreground = ${colors.green}
+;format-prefix = "     "
+;format-prefix-foreground = ${colors.green}
+
+
+;------------------------------
+;powermenu
+;------------------------------
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = " "
+label-open-foreground = ${colors.foreground}
+label-close = "  cancel"
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = log out
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = reboot
+menu-1-0-exec = reboot
+menu-1-1-exec = menu-open-0
+
+menu-2-0 = power off
+menu-2-0-exec = shutdown now
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = log out
+menu-3-0-exec = bspc quit &
+menu-3-1-exec = menu-open-0
+
+;[module/powermenu]
+;an alternative -- used in Arch
+;type = custom/menu
+;expand = true
+;
+;format-spacing = 1
+;;format-underline = #EBCB8B
+;
+;label-open = "  "
+;label-open-font = 4
+;label-open-foreground = ${colors.foreground}
+;
+;label-close = ""
+;label-close-font = 4
+;label-close-foreground = #bbc2cf
+;
+;menu-0-0 = "Power off  "
+;menu-0-0-foreground = #bbc2cf
+;menu-0-0-exec = menu-open-1
+;
+;menu-0-1 = "Reboot  "
+;menu-0-1-foreground = #bbc2cf
+;menu-0-1-exec = menu-open-2
+;
+;menu-0-2 = "Log out  "
+;menu-0-2-foreground = #bbc2cf
+;menu-0-2-exec = menu-open-3
+;
+;menu-0-3 = " ﰸ "
+;menu-0-3-foreground = #bbc2cf
+;menu-0-3-font = 4
+;
+;menu-1-0 = "Power off  "
+;menu-1-0-exec = systemctl poweroff
+;menu-1-0-foreground = #BF616A
+;menu-1-1 = "Cancel "
+;menu-1-1-exec = menu-open-0
+;menu-1-1-foreground = #EBCB8B
+;
+;menu-2-0 = "Reboot  "
+;menu-2-0-exec = systemctl reboot
+;menu-2-0-foreground = #BF616A
+;menu-2-1 = "Cancel"
+;menu-2-1-exec = menu-open-0
+;menu-2-1-foreground = #EBCB8B
+;
+;menu-3-0 = "Log out  "
+;menu-3-0-exec = i3-msg exit
+;menu-3-0-foreground = #BF616A
+;menu-3-1 = "Cancel"
+;menu-3-1-exec = menu-open-0
+;menu-3-1-foreground = #EBCB8B
+;
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
