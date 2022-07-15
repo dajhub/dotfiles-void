@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# I admit that the following script is a shit, but I have no idea currently
+
+readonly DIR="$HOME/.config/picom.conf"
+message=""
+
+if pidof picom; then
+    message="Disabling Picom..."
+    kill $(pidof picom)
+else
+    if [[ -f "/usr/bin/picom" || -f "/bin/picom" || -f "${HOME}/.local/bin/picom" ]]; then
+        picom --config "${DIR}" -b
+        message="Enabling Picom..."
+    else
+        message="Picom not found!"
+    fi
+fi
+
+notify-send -t 3000 -i "notification" "Picom" "${message}"

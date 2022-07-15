@@ -1,12 +1,8 @@
 ### Dotfiles for Void Linux
 
-#### Applications
-- sudo xbps-remove -R firefox-esr
-- sudo xbps-install -S firefox wget git xtools nano gpick atom rofi viewnior flameshot task vlc tlp
-- to enable tlp: 'sudo tlp start'
-
-#### XFCE
-- sudo xbps-install -S file-roller xfce4-docklike-plugin xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin
+#### Applications & XFCE scripts
+- see install script -- 'sudo ./install.sh'
+	
 
 #### Void - Additional Repositories
 - sudo xbps-install void-repo-nonfree
@@ -31,10 +27,6 @@ Note: The above command will bounce you out of xfce and into a terminal.  Take a
 
 ### Miscellaneous
 - Keyboard shortcut for rofi 'rofi -show drun'
-- Xfce panel settings:
-	- Display
-		- mode: deskbar
-		- Row size: 40 pixels
 
 
 #### Void Commands
