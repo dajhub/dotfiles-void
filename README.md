@@ -36,6 +36,29 @@ Note: The above command will bounce you out of xfce and into a terminal.  Take a
 - xbps-query -l | grep vlc      		### Searching Through Installed Packages
 - sudo xbps-remove -R           	### Remove a package with all its dependencies
 
+#### My Own Aliases
+
+Located at the end of .bashrc file
+
+```
+# Searching for a package:
+alias xbs='xbps-query -Rs'
+
+# Installing the package:
+alias xbi='sudo xbps-install -S'
+
+# System update:
+alias xbu='sudo xbps-install -Su'
+
+#Removing a package with all its dependencies:
+alias xbr='sudo xbps-remove -S'
+
+# Removing orphans and package cache:
+alias xbo='sudo xbps-remove -Oo'
+
+# Searching Through Installed Packages, e.g. add vlc after alias
+alias xbsip='xbps-query -l | grep'
+```
 
 #### References
 - https://linuxiac.com/void-linux-xbps-package-manager/

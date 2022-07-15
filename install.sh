@@ -27,7 +27,7 @@ echo 'Install Void packages...'
 sudo xbps-install -S \
 	xfce4-docklike-plugin \
 	xfce4-whiskermenu-plugin \
-	firefox \\
+	firefox \
 	geany \
 	viewnior \
 	gcolor2 \
