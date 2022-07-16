@@ -46,6 +46,9 @@ sudo xbps-install -S \
 	fontmanager \
 	htop \
 	neofetch \
+	vscode \
+	file-roller \
+	catfish \
 	pfetch
 
 # ---

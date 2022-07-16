@@ -51,7 +51,7 @@ alias xbi='sudo xbps-install -S'
 alias xbu='sudo xbps-install -Su'
 
 #Removing a package with all its dependencies:
-alias xbr='sudo xbps-remove -S'
+alias xbr='sudo xbps-remove -R'
 
 # Removing orphans and package cache:
 alias xbo='sudo xbps-remove -Oo'
