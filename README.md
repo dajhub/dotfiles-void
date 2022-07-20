@@ -1,9 +1,13 @@
 ### Dotfiles for Void Linux
 
+#### Void xfce Desktop with Everblush Theme
+Link to everblush theming: https://github.com/Everblush
+
+![Void - Everblush - xfce](https://i.imgur.com/TzirVcJ.png)
+
 #### Applications & XFCE scripts
 - see install script -- 'sudo ./install.sh'
 	
-
 #### Void - Additional Repositories
 - sudo xbps-install void-repo-nonfree
 - sudo xbps-install void-repo-multilib-nonfree

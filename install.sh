@@ -37,6 +37,7 @@ sudo xbps-install -S \
 	rofi \
 	task \
 	wget \
+	curl \
 	nano \
 	tlp \
 	vlc \
